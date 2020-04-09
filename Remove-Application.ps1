@@ -45,7 +45,7 @@ param (
 Process {
     
     #Parameter check and operation selection
-    if (($DisplayName -eq $null) -and ($Version -eq $null)) {
+    if (($DisplayName -eq $null) -and ($Version -eq $null) -and ($Publisher -ne $null)) {
         $RegHives | ForEach-Object {
             $keys = Get-ChildItem $_ -Recurse
             $keys | ForEach-Object {
@@ -60,7 +60,7 @@ Process {
             }
         }
     }
-    elseif (($Publisher -eq $null) -and ($Version -eq $null)) {
+    elseif (($Publisher -eq $null) -and ($Version -eq $null) -and ($DisplayName -ne $null)) {
         $RegHives | ForEach-Object {
             $keys = Get-ChildItem $_ -Recurse
             $keys | ForEach-Object {
@@ -74,7 +74,7 @@ Process {
             }
         }
     }
-    elseif (($DisplayName -ne $null) -and ($Version -ne $null)) {
+    elseif (($DisplayName -ne $null) -and ($Version -ne $null) -and ($Publisher -eq $null)) {
         $RegHives | ForEach-Object {
             $keys = Get-ChildItem $_ -Recurse
             $keys | ForEach-Object {
@@ -93,7 +93,7 @@ Process {
     }
 }
 End {
-    if (($DisplayName -eq $null) -and ($Version -eq $null)) {
+    if (($DisplayName -eq $null) -and ($Version -eq $null) -and ($Publisher -ne $null)) {
         $RegHives | ForEach-Object {
             $keys = Get-ChildItem $_ -Recurse
             $keys | ForEach-Object {
@@ -106,7 +106,7 @@ End {
             }
         }
     }
-    elseif (($Publisher -eq $null) -and ($Version -eq $null)) {
+    elseif (($Publisher -eq $null) -and ($Version -eq $null) -and ($DisplayName -ne $null)) {
         $RegHives | ForEach-Object {
             $keys = Get-ChildItem $_ -Recurse
             $keys | ForEach-Object {
@@ -118,7 +118,7 @@ End {
             }
         }
     }
-    elseif (($DisplayName -ne $null) -and ($Version -ne $null)) {
+    elseif (($DisplayName -ne $null) -and ($Version -ne $null) -and ($Publisher -eq $null)) {
         $RegHives | ForEach-Object {
             $keys = Get-ChildItem $_ -Recurse
             $keys | ForEach-Object {
